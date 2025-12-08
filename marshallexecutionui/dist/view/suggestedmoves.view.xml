@@ -1,0 +1,170 @@
+<mvc:View
+    controllerName="com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.suggestedmoves"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page showHeader="false">
+       <!-- <OverflowToolbar
+            id="otb1"
+            design="Transparent"
+            height="5%"
+            class="onerempadding"
+        >
+             <Button
+                press="navBack"
+                icon="sap-icon://nav-back"
+                class="sapUiTinyMarginEnd sapUiTinyMarginTop sapUiMediumMarginBottom"
+                type="Transparent"
+            /> 
+            <Title
+                text="{i18n>suggestmoves}"
+                level="H4"
+                class="sapUiTinyMarginTop sapUiMediumMarginBottom"
+            /> 
+        </OverflowToolbar> -->
+        <VBox height="25%"></VBox>
+        <VBox
+            width="100%"
+            fitContainer="true"
+            visible="true"
+        >
+            <!-- <VBox
+                width="100%"
+                height="auto"
+                alignItems="Center"
+                alignContent="Center"
+                justifyContent="Center"
+                
+                fitContainer="true"
+            > -->
+                <!-- <VBox
+                    width="100%"
+                    alignContent="Center"
+                    alignItems="Start"
+                    class="cageVBoxMarginLeft"
+                    fitContainer="true"
+                >
+                    <Toolbar
+                        design="Transparent"
+                        style="Clear"
+                        width="100%"
+                        class="marginLeftToolbar"
+                    >
+                        <ToolbarSpacer width="7rem" />
+                    </Toolbar>
+                </VBox>
+                <HBox
+                    width="100%"
+                    alignContent="Start"
+                    alignItems="Start"
+                    class="sapUiTinyMargin customMarginVBox"
+                    fitContainer="true"
+                >
+                    <Label
+                        id="LabelRoute"
+                        text=""
+                    />
+                </HBox> -->
+
+                <List
+                    id="cageList"
+                    class="wideList"
+                    items="{path:'flattened>/visibleResults'}"
+                    mode="SingleSelectMaster"
+                    itemPress=".onItemPress"
+                    width="80%"
+                >
+                    <CustomListItem
+                        type="Active"
+                        class="listCard"
+                        
+                    >
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="SpaceBetween"
+                            class="horizontalLine"
+                        >
+                            <HBox width="20%">
+                                <Label
+                                    text="{i18n>cageID}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>CageID}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+
+                            </HBox> <HBox width="20%">
+                                <Label
+                                    text="{i18n>palletid}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>PalletID}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+
+                            <HBox width="30%">
+                                <Label
+                                    text="{i18n>media}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>Media}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+
+                            <HBox width="25%">
+                                <Label
+                                    text="{i18n>status}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>Status}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+
+                            <HBox width="25%">
+                                <Label
+                                    text="{i18n>src}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>Source}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+                        </HBox>
+                    </CustomListItem>
+                </List>
+
+                <HBox justifyContent="Center">
+                    <!-- Up Arrow -->
+                    <Button
+                        id="btnUp"
+                        icon="sap-icon://navigation-up-arrow"
+                        type="Transparent"
+                        press=".onShowLess"
+                        visible="false"
+                    />
+                    <!-- hidden initially -->
+
+                    <!-- Down Arrow -->
+                    <Button
+                        id="btnDown"
+                        icon="sap-icon://navigation-down-arrow"
+                        type="Transparent"
+                        press=".onShowMore"
+                    />
+                </HBox>
+            <!-- </VBox> -->
+        </VBox>
+    </Page>
+</mvc:View>

@@ -1,0 +1,80 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog
+        xmlns:f="sap.f"
+        xmlns:card="sap.f.cards"
+        class="sapUiPopupWithPadding"
+        showHeader="false"
+        verticalScrolling="false"
+        stretch="false"
+     
+    >
+        <content>
+            <VBox
+                alignItems="Center"
+                alignContent="Center"
+                class="sapUiSmallMarginTop"
+                width="40vw"
+            >
+                <HBox class="sapUiTinyMargin">
+                    <core:Icon
+                        src="sap-icon://alert"
+                        class="size1"
+                        color="#031E48"
+                    >
+                        <core:layoutData>
+                            <FlexItemData styleClass="sapUiSmallMarginEnd" growFactor="1" />
+                        </core:layoutData>
+                    </core:Icon>
+                    <Text
+                        text="Confirmation"
+                        icon="sap-icon://alert"
+                    />
+                </HBox>
+                <Text text="Would you like to confirm the move?" />
+            </VBox>
+        </content>
+      
+
+    <content>
+    <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
+         <Button
+                        id="WrapAccept"
+                        width="100px"
+                        text=""
+                        icon="sap-icon://accept"
+                        type="Emphasized"
+                        press="._closeWrapDialogAccept"
+                        ariaHasPopup="Dialog"
+                        class="greenButton"
+                    />
+                   
+                    <Button
+                        id="WrapDecline"
+                        width="100px"
+                        text=""
+                        icon="sap-icon://decline"
+                        type="Emphasized"
+                        press="._closeWrapDialogDecline"
+                        ariaHasPopup="Dialog"
+                        class="redButton sapUiTinyMarginBegin"
+                    />
+    </HBox>
+
+    </content>
+            <!-- <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                   
+                    <ToolbarSpacer />
+                </content>
+            </Toolbar> -->
+        
+    </Dialog>
+</core:FragmentDefinition>

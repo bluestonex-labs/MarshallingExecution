@@ -1,0 +1,142 @@
+<mvc:View
+    controllerName="com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.scanpallet"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+>
+    <Page showHeader="false">
+      <!--  <OverflowToolbar
+            id="otb2"
+            design="Transparent"
+            height="10%"
+            class="onerempadding"
+        >
+             <Button
+                press="navBack"
+                icon="sap-icon://nav-back"
+                class="sapUiTinyMarginEnd sapUiTinyMarginTop sapUiMediumMarginBottom"
+                type="Transparent"
+            /> 
+            <Title
+                text="{i18n>scanpallet}"
+                level="H4"
+                class="sapUiTinyMarginTop sapUiMediumMarginBottom"
+            />
+        </OverflowToolbar>-->
+        <HBox
+            width="100%"
+            height="100%"
+        >
+            <VBox
+                width="50%"
+                alignItems="Center"
+                alignContent="Center"
+                justifyContent="Center"
+                class="scrollableForm"
+            >
+                <f:Form
+                    id="scanpalletid"
+                    editable="true"
+                    class="palletform"
+                >
+                    <f:layout>
+                        <f:ResponsiveGridLayout
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="1"
+                            columnsL="1"
+                            columnsM="1"
+                            singleContainerFullSize="false"
+                        />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{i18n>cageID}">
+                                    <f:fields>
+                                        <Input id="scanPalMoveID1" enabled="true" change="onCageIDInput"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                  <f:FormElement label="{i18n>palletid}">
+                                    <f:fields>
+                                        <Input id="scanPalMovePalID1" enabled="true" change="onPalletIDInput"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="{i18n>route}">
+                                    <f:fields>
+                                        <Input id="scanPalMoveRoute1" enabled="false"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="{i18n>consoRoute}">
+                                    <f:fields>
+                                        <Input id="scanPalMoveConsoRoute1" enabled="false"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="{i18n>src}">
+                                    <f:fields>
+                                        <Input id="scanPalMoveSrc1" enabled="false"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                                    <f:FormElement label="{i18n>dest}">
+                                    <f:fields>
+                                        <Input id="scanPalMoveDest1" enabled="false"
+                                            value=""
+                                            
+                                        />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+            </VBox>
+            <VBox
+                width="50%"
+                alignItems="Center"
+                alignContent="Center"
+                justifyContent="Center"
+                class=""
+            >
+                <VBox>
+                    <Button
+                        id="confirmmove"
+                        class="pickTaskFilters pickTaskFiltersSelected sapUiSmallMarginBottom"
+                        text="{i18n>cnfrmMove}"
+                        press=".onConfirmMove"
+                    />
+                </VBox>
+            </VBox>
+        </HBox>
+        <VBox
+            width="100vw"
+            alignItems="Center"
+            justifyContent="Center"
+            class=""
+            height="10%"
+        />
+    </Page>
+</mvc:View>

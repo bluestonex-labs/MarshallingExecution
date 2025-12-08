@@ -1,0 +1,175 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.sysco.wm.marshallexecutionui.marshallexecutionui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.0",
+      "toolsId": "a1b7664f-385e-48be-8fae-ba52cb326e1a"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "../marshallingservices/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Marshall_Execution-Display": {
+          "semanticObject": "Marshall_Execution",
+          "action": "Display",
+          "title": "{{Marshall_Execution-Display.flpTitle}}",
+          "icon": "sap-icon://journey-depart",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.136.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sysco.wm.marshallexecutionui.marshallexecutionui.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.sysco.wm.marshallexecutionui.marshallexecutionui.view",
+        "async": true,
+        "viewPath": "com.sysco.wm.marshallexecutionui.marshallexecutionui.view"
+      },
+      "routes": [
+        {
+          "name": "Routescanlabel",
+          "pattern": ":?query:",
+          "target": [
+            "Targetscanlabel"
+          ]
+        },
+        {
+          "name": "suggestedmoves",
+          "pattern": "suggestedmoves",
+          "target": [
+            "suggestedmoves"
+          ]
+        },
+        {
+          "name": "scanpallet",
+          "pattern": "scanpallet",
+          "target": [
+            "scanpallet"
+          ]
+        },
+        {
+          "name": "scanpalletforsuggmove",
+          "pattern": "scanpalletforsuggmove",
+          "target": [
+            "scanpalletforsuggmove"
+          ]
+        },
+        {
+          "name": "scanninglabel",
+          "pattern": "scanninglabel",
+          "target": [
+            "scanninglabel"
+          ]
+        }
+      ],
+      "targets": {
+        "Targetscanlabel": {
+          "id": "scanlabel",
+          "name": "scanlabel"
+        },
+        "suggestedmoves": {
+          "id": "suggestedmoves",
+          "name": "suggestedmoves"
+        },
+        "scanpallet": {
+          "id": "scanpallet",
+          "name": "scanpallet"
+        },
+        "scanpalletforsuggmove": {
+          "id": "scanpalletforsuggmove",
+          "name": "scanpalletforsuggmove"
+        },
+        "scanninglabel": {
+          "id": "scanninglabel",
+          "name": "scanninglabel"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.sysco.wm.marshallexecutionui.marshallexecutionui.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "MarshallExecution"
+  }
+}

@@ -1,0 +1,284 @@
+/* Enter your custom styles here */
+
+.borderLeft {
+    border-left: solid !important;
+}
+
+.borderRight {
+    border-right: solid !important;
+}
+
+.borderTop {
+    border-top: solid !important;
+}
+
+.pickTaskFilters.sapMBtn {
+    min-width: 12rem;
+}
+
+.pickTaskFilters .sapMBtnInner {
+    border: none;
+    border-radius: 2rem;
+    align-items: center;
+    height: 2.5rem;
+}
+
+.pickTaskFiltersSelected .sapMBtnInner {
+    background-color: black;
+}
+
+.pickTaskFilters .sapMBtnText {
+    font-size: .9rem;
+    color: #1b1b1e;
+}
+
+.pickTaskFiltersSelected .sapMBtnText {
+    color: #ffffff !important;
+}
+
+.pickTaskFilters .sapMBtnText:hover {
+    font-size: .9rem;
+    color: #1b1b1e;
+}
+
+.pickTaskFiltersSelected .sapMBtnInner:hover {
+    background-color: black;
+}
+
+.boxItem {
+    background-color: black;
+    border: none;
+    border-radius: 2rem;
+    align-items: center;
+    height: 2.5rem;
+
+    min-width: 12rem;
+}
+
+.boxItem .sapMText {
+    color: white;
+    padding: 0.7rem;
+}
+
+.responsiveBox {
+    /* width: 48%;
+    min-width: 300px;
+    margin-bottom: 1rem; */
+    width: 50%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .responsiveBox {
+        /* width: 100%; */
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.palletform .sapUiFormResGrid>div {
+    background-color: #f5f6f7;
+    font-size: 0.9rem;
+}
+
+.otb1 {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.onerempadding {
+    padding-top: 1.5rem;
+}
+
+.redButton .sapMBtnInner {
+    color: #ffffff !important;
+    background-color: red !important;
+    background: red !important;
+    border-color: red !important;
+
+}
+
+.greenButton .sapMBtnInner {
+    color: #ffffff !important;
+    background-color: green !important;
+    background: green !important;
+    border-color: green !important;
+
+}
+
+/* Enter your custom styles here */
+.largeWidth {
+    width: 200px !important;
+}
+
+.blackButton .sapMBtnInner {
+    color: #ffffff !important;
+    background-color: black !important;
+    background: black !important;
+    border-color: black !important;
+}
+
+.greyButton .sapMBtnInner {
+    color: #ffffff !important;
+    background-color: grey !important;
+    background: grey !important;
+    border-color: grey !important;
+}
+
+.roundCorner .sapMBtnInner {
+    border-radius: 2rem !important;
+}
+
+.borderless .sapMBtnInner {
+    background-color: transparent;
+    border: none;
+}
+
+.downArrowBlack .sapMBtnIcon {
+    color: black !important;
+    font-size: 1.375rem !important;
+}
+
+.customBeginMargin {
+    margin-left: 0.8rem !important;
+}
+
+.marginLeftToolbar {
+    margin-left: 0.4rem !important;
+}
+
+.cageVBoxMarginLeft {
+    margin-left: 65px !important;
+}
+
+.customMarginVBox {
+    margin-left: 100px !important;
+}
+
+.sapMListTblCell {
+    text-align: left !important;
+    vertical-align: top !important;
+}
+
+.customBorderSpacing .sapMListTbl {
+    border-spacing: 3px !important;
+}
+
+.paddingGrid {
+    padding-top: 18px !important;
+    padding-left: 14px !important;
+}
+
+.buttonTopPadding {
+    padding-top: 84px !important;
+}
+
+.sapMListTblHighlightCol+.sapMListTblHeaderCell,
+.sapMListTblHighlightCell+.sapMListTblCell {
+    padding-left: 0.4rem !important;
+}
+
+.greenCells {
+    background-color: lightgreen !important;
+}
+
+.redText .sapMLabel {
+    color: red;
+    font-size: 1rem !important
+}
+
+.sapMObjStatusNone .sapMObjStatusText {
+    color: transparent !important;
+}
+
+
+.wideList {
+    width: 100px;
+    margin: 2rem auto !important;
+    background: transparent;
+    border: none;
+}
+
+.listCard {
+    background: #fff !important;
+    border-radius: 1rem;
+    padding: 1rem 1rem !important;
+    margin-bottom: 0.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.listCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.boldLabel {
+    font-weight: 600;
+    color: #0a0a0a;
+    margin-right: 0.3rem;
+}
+
+
+.dataText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    /* adjust as needed */
+}
+
+
+.positionText {
+    font-weight: bold;
+    color: #0a6ed1;
+    margin-left: 1rem;
+}
+
+.horizontalLine {
+    display: flex;
+    /* Ensure elements align horizontally */
+    flex-wrap: nowrap !important;
+    /* Prevent line breaks */
+    justify-content: space-between;
+    /* Spread items evenly */
+    align-items: center;
+    /* Vertically center the text */
+    /* Add spacing between label sets */
+    width: 100%;
+    /* Use full width of list card */
+    overflow-x: auto;
+    /* Allow scroll if content overflows */
+}
+
+
+@media (max-width: 768px) {
+    .horizontalLine {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+}
+
+.sapMList {
+    border-radius: 1rem !important;
+}
+
+.wideTable {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sapMListTblCell,
+.sapMListTblHeaderCell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.scrollableForm {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-top: 7.5rem; 
+}
