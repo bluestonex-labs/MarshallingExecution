@@ -5,7 +5,6 @@ sap.ui.define([
 
     return Controller.extend("com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.suggestedmoves", {
 
-        //translation update 001
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("suggestedmoves").attachPatternMatched(this._onRouteMatched, this);
