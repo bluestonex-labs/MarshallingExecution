@@ -78,6 +78,7 @@ sap.ui.define([
             // Open the dialog
             this._oWrapDialogs.open();
         },
+        
         _closeWrapDialogAccept: function (oEvent) {
             var that = this;
             if (this._oWrapDialogs) {

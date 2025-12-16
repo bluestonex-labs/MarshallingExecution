@@ -4,6 +4,9 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.suggestedmoves", {
+
+
+        //ctm test
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("suggestedmoves").attachPatternMatched(this._onRouteMatched, this);
