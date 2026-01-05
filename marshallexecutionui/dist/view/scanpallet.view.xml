@@ -7,24 +7,6 @@
     xmlns:core="sap.ui.core"
 >
     <Page showHeader="false">
-      <!--  <OverflowToolbar
-            id="otb2"
-            design="Transparent"
-            height="10%"
-            class="onerempadding"
-        >
-             <Button
-                press="navBack"
-                icon="sap-icon://nav-back"
-                class="sapUiTinyMarginEnd sapUiTinyMarginTop sapUiMediumMarginBottom"
-                type="Transparent"
-            /> 
-            <Title
-                text="{i18n>scanpallet}"
-                level="H4"
-                class="sapUiTinyMarginTop sapUiMediumMarginBottom"
-            />
-        </OverflowToolbar>-->
         <HBox
             width="100%"
             height="100%"
@@ -63,49 +45,57 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>cageID}">
                                     <f:fields>
-                                        <Input id="scanPalMoveID1" enabled="true" change="onCageIDInput"
+                                        <Input
+                                            id="scanPalMoveID1"
+                                            enabled="true"
+                                            change="onCageIDInput"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>
-                                  <f:FormElement label="{i18n>palletid}">
+                                <f:FormElement label="{i18n>palletid}">
                                     <f:fields>
-                                        <Input id="scanPalMovePalID1" enabled="true" change="onPalletIDInput"
+                                        <Input
+                                            id="scanPalMovePalID1"
+                                            enabled="true"
+                                            change="onPalletIDInput"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>route}">
                                     <f:fields>
-                                        <Input id="scanPalMoveRoute1" enabled="false"
+                                        <Input
+                                            id="scanPalMoveRoute1"
+                                            enabled="false"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>consoRoute}">
                                     <f:fields>
-                                        <Input id="scanPalMoveConsoRoute1" enabled="false"
+                                        <Input
+                                            id="scanPalMoveConsoRoute1"
+                                            enabled="false"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>src}">
                                     <f:fields>
-                                        <Input id="scanPalMoveSrc1" enabled="false"
+                                        <Input
+                                            id="scanPalMoveSrc1"
+                                            enabled="false"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>
-                                    <f:FormElement label="{i18n>dest}">
+                                <f:FormElement label="{i18n>dest}">
                                     <f:fields>
-                                        <Input id="scanPalMoveDest1" enabled="false"
+                                        <Input
+                                            id="scanPalMoveDest1"
+                                            enabled="false"
                                             value=""
-                                            
                                         />
                                     </f:fields>
                                 </f:FormElement>

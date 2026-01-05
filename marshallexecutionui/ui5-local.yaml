@@ -34,6 +34,11 @@ server:
             url: https://bsx-sysco-sandbox-f20-sandbox-f20-cloudwm-srv.cfapps.eu10-004.hana.ondemand.com/
             pathReplace: /
             destination: CloudWM
+          - url: https://bsx-sysco-sandbox-f20-sandbox-f20-cloudwm-srv.cfapps.eu10-004.hana.ondemand.com/
+            authenticationType: OAuth2UserTokenExchange
+            destination: CloudWM
+            path: /cloudWMService
+            pathReplace: /
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

@@ -8,23 +8,6 @@
     xmlns:ndc="sap.ndc"
 >
     <Page showHeader="false">
-      <!--  <OverflowToolbar
-            design="Transparent"
-            height="10%"
-            class="onerempadding"
-        >
-             <Button
-                press="navBack"
-                icon="sap-icon://nav-back"
-                class="sapUiTinyMarginEnd sapUiTinyMarginTop sapUiMediumMarginBottom"
-                type="Transparent"
-            /> 
-            <Title
-                text="{i18n>scanlabel}"
-                level="H4"
-                class="sapUiTinyMarginTop sapUiMediumMarginBottom"
-            />
-        </OverflowToolbar>-->
         <HBox
             width="100%"
             height="80%"
@@ -76,7 +59,7 @@
                                     <f:FormElement label="{i18n>scanlabel}">
                                         <f:fields>
                                         <HBox>
-                                            <Input id="inCageID" change="onCageIDInput" placeholder="{i18n>enterlabelid}"/>
+                                            <Input id="inCageID" change="onLabelInput" placeholder="{i18n>enterlabelid}"/>
                                             <ndc:BarcodeScannerButton
                                                 id="sampleBarcodeScannerButton"
                                                 scanSuccess="onScanSuccess"

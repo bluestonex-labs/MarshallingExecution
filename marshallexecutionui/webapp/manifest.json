@@ -23,6 +23,15 @@
           "annotations": [],
           "odataVersion": "2.0"
         }
+      },
+      "CloudWM": {
+        "uri": "/cloudWMService/CloudWM/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/CloudWM/metadata.xml",
+          "odataVersion": "4.0"
+        }
       }
     },
     "crossNavigation": {
@@ -118,7 +127,7 @@
         },
         {
           "name": "scanpallet",
-          "pattern": "scanpallet",
+          "pattern": "scanpallet/:pickTaskID:",
           "target": [
             "scanpallet"
           ]

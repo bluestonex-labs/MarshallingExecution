@@ -7,22 +7,30 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.scanninglabel", {
+
         onInit() {
             var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");
             var appPath = appId.replaceAll(".", "/");
             this.appModulePath = jQuery.sap.getModulePath(appPath);
             var oRouter = this.getOwnerComponent().getRouter();
             this.oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            this.getOwnerComponent().getRouter().getRoute("scanninglabel").attachPatternMatched(this._onRouteMatched, this);
         },
+
+        _onRouteMatched: function () {
+            this.getView().byId("inCageID").setValue();
+        },
+
         navBack: function () {
             sap.ui.core.UIComponent.getRouterFor(this).navTo("Routescanlabel");
         },
+
         onScanSuccess: function (oEvent) {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
             var sText = oBundle.getText("scanCancelled");
 
             if (oEvent.getParameter("cancelled")) {
-                sap.m.MessageToast.show(sText, { duration: 1000 });
+                MessageToast.show(sText, { duration: 1000 });
             } else {
                 if (oEvent.getParameter("text")) {
                     var oInpCageFld = this.getView().byId("inCageID");
@@ -33,65 +41,60 @@ sap.ui.define([
         },
 
         onScanFail: function (oEvent) {
-            sap.m.MessageBox.show("Scan failed: " + oEvent.getParameter("message"));
+            MessageBox.show("Scan failed: " + oEvent.getParameter("message"));
         },
 
-        onCageIDInput: function (oEvent) {
-            var aData = [];
-            var selectedData = this.getView().byId("inCageID").getValue();
-            if (selectedData == "") {
-                return;
-            }
-            var oSuggestedMoveData = this.getOwnerComponent().getModel("SuggestedMoveData").getData();
-            var oData = oSuggestedMoveData.data.value;
-            var fil = oData.filter((item) => {
-                return item.To_Marshalling.ID == selectedData;
-            })
+        onLabelInput: function (oEvent) {
 
-            fil.forEach(cage => {
-                aData.push(
-                    cage?.To_Marshalling?.ID
-                );
+            var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");
+            var appPath = appId.replaceAll(".", "/");
+            this.appModulePath = jQuery.sap.getModulePath(appPath);
+            var oLocale = sap.ui.getCore().getConfiguration().getLocale();
+            var pickID = (oEvent.getParameter("value").trim()).split("|")[0];
+            var lang = oLocale.language;
+            var that = this;
+            var sDest = "/marshallingservices";
+            var path = "/Marshalling/PickTaskHeaders?$filter=ID eq '" + pickID + "' and To_Marshalling/ID ne null and To_Marshalling/Status_ID ne 'PALLETISED'&$select=ID,Route,PickJob&$expand=To_Marshalling($expand=MarshallingBinID($select=ID,Description),SuggestedBinID($select=ID,Description)),Status,Media";
+            var sUrl = this.appModulePath + sDest + path;
+
+            $.ajax({
+                url: sUrl,
+                beforeSend: function (xhr) { xhr.setRequestHeader('Accept-Language', lang); },
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
+                },
+                success: function (data) {
+                    if (data.value.length > 0) {
+                        var oScannedLabelModel = new sap.ui.model.json.JSONModel(data.value);
+                        that.getOwnerComponent().setModel(oScannedLabelModel, "oScannedLabelModel");
+                        sap.ui.core.UIComponent.getRouterFor(that).navTo("scanpallet", { pickTaskID: pickID });
+                    } else {
+                        MessageToast.show(that.oBundle.getText("labelNotFound"));
+                    }
+                    
+                },
+                error: function (textStatus, errorThrown) {
+                    console.log("Error:", textStatus, errorThrown);
+                }
             });
 
-            // Create a new model for the flattened data
-            // var oFlatModel = new sap.ui.model.json.JSONModel({ results: aData });
-            //this.getView().setModel(oFlatModel, "flattened");
-            this._allData = aData;
 
-            var oScanPalletForConfirmMove = new sap.ui.model.json.JSONModel({ fil });
-            this.getView().setModel(oScanPalletForConfirmMove, "oScanPalletForConfirmMove");
-
-            var oView = this.getView();
-
-            // Check if fragment is already loaded
-            if (!this._oWrapDialogs) {
-                // Load the fragment asynchronously
-                this._oWrapDialogs = sap.ui.xmlfragment(
-                    oView.getId(),
-                    "com.sysco.wm.marshallexecutionui.marshallexecutionui.fragment.wrapDialog",
-                    this
-                );
-                oView.addDependent(this._oWrapDialogs);
-            }
-
-            // Open the dialog
-            this._oWrapDialogs.open();
         },
-        
+
         _closeWrapDialogAccept: function (oEvent) {
             var that = this;
             if (this._oWrapDialogs) {
                 this._oWrapDialogs.close();
 
                 var result = that.callConfirmMoves();
-                sap.m.MessageBox.information(
+                MessageBox.information(
                     that.oBundle.getText("lbl"),
                     {
                         actions: [sap.m.MessageBox.Action.OK],
                         onClose: function (sAction) {
                             if (sAction === sap.m.MessageBox.Action.OK) {
-                                sap.ui.core.UIComponent.getRouterFor(this).navTo("Routescanlabel");
+                                sap.ui.core.UIComponent.getRouterFor(this).navTo("scanninglabel");
                             }
                         }.bind(that)
                     }
@@ -100,6 +103,7 @@ sap.ui.define([
             }
 
         },
+
         callConfirmMoves: function () {
             return new Promise((resolve, reject) => {
                 var that = this;
@@ -132,16 +136,11 @@ sap.ui.define([
             });
         },
 
-
-
         _closeWrapDialogDecline: function (oEvent) {
             if (this._oWrapDialogs) {
                 this._oWrapDialogs.close();
             }
 
-        },
-
-
-
+        }
     });
 });
