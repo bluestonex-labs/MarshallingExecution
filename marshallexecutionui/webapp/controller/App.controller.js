@@ -6,7 +6,7 @@ sap.ui.define([
   return BaseController.extend("com.sysco.wm.marshallexecutionui.marshallexecutionui.controller.App", {
       onInit() {
 
-      /*CTM Test2*/
+      /*CTM Test3*/
       }
   });
 });
