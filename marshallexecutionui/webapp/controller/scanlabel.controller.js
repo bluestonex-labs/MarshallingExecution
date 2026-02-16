@@ -47,11 +47,14 @@ sap.ui.define([
             var appPath = appId.replaceAll(".", "/");
             this.appModulePath = jQuery.sap.getModulePath(appPath);
             var oLocale = sap.ui.getCore().getConfiguration().getLocale();
-            var currentDateUTC = new Date().toISOString().split('T')[0]
+            var currentDateUTC = new Date().toISOString().split('T')[0];
+            var dateAfterAWeek = new Date();
+            dateAfterAWeek.setDate(dateAfterAWeek.getDate() + 7);
+            var toDate = dateAfterAWeek.toISOString().split('T')[0];
             var lang = oLocale.language;
             var that = this;
             var sDest = "/marshallingservices";
-            var path = "/Marshalling/PickTaskHeaders?$filter=Plant eq '" + plant + "' and DeliveryDate eq '" + currentDateUTC + "' and To_Marshalling/ID ne null and To_Marshalling/Status_ID ne 'PALLETISED' and To_Marshalling/Status_ID ne 'LOADED'&$select=ID,Route,PickJob&$expand=To_Marshalling($expand=MarshallingBinID($select=ID,Description),SuggestedBinID($select=ID,Description)),Status,Media";
+            var path = "/Marshalling/PickTaskHeaders?$filter=Plant eq '" + plant + "' and DeliveryDate ge '" + currentDateUTC + "' and DeliveryDate le '" + toDate + "' and To_Marshalling/ID ne null and To_Marshalling/Status_ID ne 'PALLETISED' and To_Marshalling/Status_ID ne 'LOADED'&$select=ID,Route,PickJob&$expand=To_Marshalling($expand=MarshallingBinID($select=ID,Description),SuggestedBinID($select=ID,Description)),Status,Media";
             var sUrl = this.appModulePath + sDest + path;
             
             $.ajax({
