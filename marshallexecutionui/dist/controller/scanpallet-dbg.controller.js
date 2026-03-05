@@ -171,9 +171,14 @@ sap.ui.define([
                     "Accept": "application/json"
                 },
                 success: function (data) {
-                    var oScannedCageModel = new sap.ui.model.json.JSONModel(data);
-                    that.getOwnerComponent().setModel(oScannedCageModel, "oScannedCageModel");
-                    that.bindCageData();
+                    if (data.value[0].Status.ID === "COMPLETED") {
+                        var oScannedCageModel = new sap.ui.model.json.JSONModel(data);
+                        that.getOwnerComponent().setModel(oScannedCageModel, "oScannedCageModel");
+                        that.bindCageData();
+                    } else {
+                        MessageBox.information(that.oBundle.getText("cageInProgress"));
+                    }
+                    
                 },
                 error: function (textStatus, errorThrown) {
                     console.log("Error:", textStatus, errorThrown);
@@ -226,9 +231,14 @@ sap.ui.define([
                     "Accept": "application/json"
                 },
                 success: function (data) {
-                    var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
-                    that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
-                    that.bindPalletData();
+                    if (data.value[0].Status.ID === "COMPLETED") {
+                        var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
+                        that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
+                        that.bindPalletData();
+                    } else {
+                        MessageBox.information(that.oBundle.getText("palletInProgress"));
+                    }
+                    
                 },
                 error: function (textStatus, errorThrown) {
                     console.log("Error:", textStatus, errorThrown);
