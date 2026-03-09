@@ -95,7 +95,6 @@ sap.ui.define([
                 var oPayload = {
                     "IDs": [
                         that.val
-
                     ]
                 }
                 $.ajax({
@@ -171,12 +170,18 @@ sap.ui.define([
                     "Accept": "application/json"
                 },
                 success: function (data) {
-                    if (data.value[0].Status.ID === "COMPLETED") {
-                        var oScannedCageModel = new sap.ui.model.json.JSONModel(data);
-                        that.getOwnerComponent().setModel(oScannedCageModel, "oScannedCageModel");
-                        that.bindCageData();
+                    if (data && data.value.length > 0) {
+                        if (data.value[0].Status.ID === "COMPLETED") {
+                            var oScannedCageModel = new sap.ui.model.json.JSONModel(data);
+                            that.getOwnerComponent().setModel(oScannedCageModel, "oScannedCageModel");
+                            that.bindCageData();
+                            that.getView().byId("confirmmove").setEnabled(true);
+                        } else {
+                            MessageBox.information(that.oBundle.getText("cageInProgress"));
+                        } 
                     } else {
-                        MessageBox.information(that.oBundle.getText("cageInProgress"));
+                        that.getView().byId("confirmmove").setEnabled(false);
+                        MessageBox.show("No record Found");
                     }
                     
                 },
@@ -231,12 +236,18 @@ sap.ui.define([
                     "Accept": "application/json"
                 },
                 success: function (data) {
-                    if (data.value[0].Status.ID === "COMPLETED") {
-                        var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
-                        that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
-                        that.bindPalletData();
+                    if (data && data.value.length > 0) {
+                        if (data.value[0].Status.ID === "COMPLETED") {
+                            var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
+                            that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
+                            that.getView().byId("confirmmove").setEnabled(true);
+                            that.bindPalletData();
+                        } else {
+                            MessageBox.information(that.oBundle.getText("palletInProgress"));
+                        that.getView().byId("confirmmove").setEnabled(false);
+                        } 
                     } else {
-                        MessageBox.information(that.oBundle.getText("palletInProgress"));
+                        MessageBox.show("No record Found");
                     }
                     
                 },
