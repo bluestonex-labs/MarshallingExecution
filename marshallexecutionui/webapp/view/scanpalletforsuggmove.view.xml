@@ -124,7 +124,7 @@
                 <VBox>
                     <Button
                         
-                        class="pickTaskFilters pickTaskFiltersSelected sapUiSmallMarginBottom"
+                        class="blackButton largeWidth"
                         text="{i18n>cnfrmMove}"
                         press=".onConfirmMove"
                     />
