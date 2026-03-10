@@ -9,7 +9,7 @@
         showHeader="false"
     >
         <HBox
-            width="100%"
+            width="90%"
             fitContainer="true"
         >
             <VBox
@@ -43,21 +43,21 @@
                 <VBox id="stationButtonsBox">
                     <Button
                         id="suggestMoves"
-                        class="pickTaskFilters pickTaskFiltersSelected sapUiSmallMarginBottom"
+                        class="pickTaskFilters sapUiMediumMarginBottom largeWidth mediumButton"
                         text="{i18n>suggestmoves}"
                         press=".onSuggestedMoves"
                     />
 
                     <Button
                         id="scanPallet"
-                        class="pickTaskFilters pickTaskFiltersSelected sapUiTinyMarginEnd sapUiSmallMarginBottom"
+                        class="pickTaskFilters sapUiTinyMarginEnd sapUiMediumMarginBottom largeWidth mediumButton"
                         text="{i18n>scpalletcage}"
                         press=".onScanPallet"
                     />
 
                     <Button
                         id="scanLabel"
-                        class="pickTaskFilters pickTaskFiltersSelected sapUiTinyMarginEnd sapUiSmallMarginBottom"
+                        class="pickTaskFilters sapUiTinyMarginEnd sapUiMediumMarginBottom largeWidth mediumButton"
                         text="{i18n>scanlabel}"
                         press=".onScanLabel"
                     />

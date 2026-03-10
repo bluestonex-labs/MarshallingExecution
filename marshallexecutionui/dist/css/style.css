@@ -13,14 +13,21 @@
 }
 
 .pickTaskFilters.sapMBtn {
-    min-width: 12rem;
+    height: 35px !important; 
 }
 
 .pickTaskFilters .sapMBtnInner {
-    border: none;
-    border-radius: 2rem;
-    align-items: center;
-    height: 2.5rem;
+    width: 20rem!important;
+    color: #ffffff !important;
+    background-color: black !important;
+    background: black !important;
+    border-color: black !important; 
+    height: 50px !important; 
+ 
+}
+
+.pickTaskFilters .sapMBtnContent {
+    line-height: 50px !important; 
 }
 
 .pickTaskFiltersSelected .sapMBtnInner {
@@ -281,4 +288,41 @@
     max-height: 100%;
     overflow-y: auto;
     padding-top: 7.5rem; 
+}
+
+.largeWidth {
+    width: 200px !important;
+}
+
+.mediumButton .sapMBtn {
+    height: 45px !important;
+}
+
+.mediumButton .sapMBtnInner {
+    height: 45px !important;
+}
+
+.mediumButton .sapMBtnContent {
+    line-height: 45px !important; 
+}
+
+.blackButton.sapMBtn {
+    height: 100px !important;
+}
+
+.blackButton .sapMBtnInner {
+    color: #ffffff !important;
+    background-color: black !important;
+    background: black !important;
+    border-color: black !important; 
+    height: 100px !important; 
+}
+
+.blackButton .sapMBtnContent {
+    line-height: 100px !important; 
+}
+
+.blackButton .sapMBtnIcon {
+    color: #ffffff !important;
+    line-height: 100px;
 }
