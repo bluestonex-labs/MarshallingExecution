@@ -117,6 +117,7 @@
                         class="blackButton largeWidth"
                         text="{i18n>cnfrmMove}"
                         press=".onConfirmMove"
+                        enabled="false"
                     />
                 </VBox>
             </VBox>

@@ -175,7 +175,13 @@ sap.ui.define([
                             var oScannedCageModel = new sap.ui.model.json.JSONModel(data);
                             that.getOwnerComponent().setModel(oScannedCageModel, "oScannedCageModel");
                             that.bindCageData();
-                            that.getView().byId("confirmmove").setEnabled(true);
+                            if(that.getView().byId('scanPalMoveDest1').getProperty('value') !== ''){
+                                that.getView().byId("confirmmove").setEnabled(true);
+                            }
+                            else{
+                                that.getView().byId("confirmmove").setEnabled(false);
+                            }
+                            
                         } else {
                             MessageBox.information(that.oBundle.getText("cageInProgress"));
                         } 
@@ -240,7 +246,13 @@ sap.ui.define([
                         if (data.value[0].Status.ID === "COMPLETED") {
                             var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
                             that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
-                            that.getView().byId("confirmmove").setEnabled(true);
+                            if(that.getView().byId('scanPalMoveDest1').getProperty('value') !== ''){
+                                that.getView().byId("confirmmove").setEnabled(true);
+                            }
+                            else{
+                                that.getView().byId("confirmmove").setEnabled(false);
+                            }
+                            // that.getView().byId("confirmmove").setEnabled(true);
                             that.bindPalletData();
                         } else {
                             MessageBox.information(that.oBundle.getText("palletInProgress"));

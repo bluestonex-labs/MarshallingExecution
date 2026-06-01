@@ -21,10 +21,12 @@ sap.ui.define([
             var SuggSelectedMoveData = this.getOwnerComponent().getModel("scanPalletForSuggMove").getData().fil[0];
             var scanPalMove = new sap.ui.model.json.JSONModel(SuggSelectedMoveData);
             this.getView().setModel(scanPalMove, "scanPalMove");
-            // this.getView().byId("scanPalMoveID").setValue(SuggSelectedMoveData.To_Marshalling.CageID);
-            // this.getView().byId("scanPalMoveID").setEnabled(false);
-            // this.getView().byId("scanPalMoveSrc").setValue(SuggSelectedMoveData.To_Marshalling.MarshallingBinID.Description);
-            // this.getView().byId("scanPalMoveSrc").setEnabled(false);
+            if (this.getView().getModel('scanPalMove').getData().To_Marshalling.SuggestedBinID_ID===null){
+                this.getView().byId('confirmMoveBtnId').setEnabled(false);
+            }
+            else{
+                this.getView().byId('confirmMoveBtnId').setEnabled(true);
+            }
         },
         onConfirmMove: function (oEvent) {
             var oView = this.getView();
