@@ -246,6 +246,7 @@ sap.ui.define([
                         if (data.value[0].Status.ID === "COMPLETED") {
                             var oScannedPalletModel = new sap.ui.model.json.JSONModel(data);
                             that.getOwnerComponent().setModel(oScannedPalletModel, "oScannedPalletModel");
+                            that.bindPalletData();
                             if(that.getView().byId('scanPalMoveDest1').getProperty('value') !== ''){
                                 that.getView().byId("confirmmove").setEnabled(true);
                             }
@@ -253,7 +254,6 @@ sap.ui.define([
                                 that.getView().byId("confirmmove").setEnabled(false);
                             }
                             // that.getView().byId("confirmmove").setEnabled(true);
-                            that.bindPalletData();
                         } else {
                             MessageBox.information(that.oBundle.getText("palletInProgress"));
                         that.getView().byId("confirmmove").setEnabled(false);
