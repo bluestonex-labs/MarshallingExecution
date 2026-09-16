@@ -28,10 +28,13 @@ sap.ui.define([
                 success: function (oData, response) {
                     BusyIndicator.hide();
                     const assignedPlants = oData.value;
+                    /*
                     assignedPlants.forEach(function (assignedPlant, index) {
                         if (assignedPlant.DefaultPlant)
                             that.plant = assignedPlant.Plant;
                     });
+                    */
+                    that.plant = assignedPlants.defaultPlant;
 
                     that.getMarshallingData(that.plant);
                 },
