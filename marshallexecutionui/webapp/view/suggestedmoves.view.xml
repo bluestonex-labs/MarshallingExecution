@@ -133,6 +133,17 @@
 
                             <HBox width="25%">
                                 <Label
+                                    text="{i18n>temperature}:"
+                                    class="boldLabel"
+                                />
+                                <Text
+                                    text="{flattened>Temperature}"
+                                    class="dataText sapUiTinyMarginEnd"
+                                />
+                            </HBox>
+
+                            <HBox width="25%">
+                                <Label
                                     text="{i18n>src}:"
                                     class="boldLabel"
                                 />

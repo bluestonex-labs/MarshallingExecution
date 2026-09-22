@@ -110,7 +110,8 @@ sap.ui.define([
                     PalletID:cage?.To_Marshalling?.PalletID || "",
                     Media: cage?.Media?.Description || "",
                     Status: cage?.Status?.Description || "",
-                    Source: cage?.To_Marshalling?.MarshallingBinID?.Description || ""
+                    Source: cage?.To_Marshalling?.MarshallingBinID?.Description || "",
+                    Temperature: cage?.Temperature_ID
                 });
             });
 
@@ -119,6 +120,10 @@ sap.ui.define([
             this.getView().setModel(oFlatModel, "flattened");
             this._allData = aFlattenedData;
             this._updatePagedData();
+        },
+
+        sortData: function (array, option) {
+            array
         },
 
         _updatePagedData: function () {

@@ -19,7 +19,7 @@ sap.ui.define([
             var lang = oLocale.language;
 
             $.ajax({
-                url: this.appModulePath + "/marshallingservices/CloudWM/getPlantListForUser()",
+                url: this.appModulePath + "/cloudWMService/CloudWM/getUserContext()",//"/marshallingservices/CloudWM/getPlantListForUser()",
                 beforeSend: function (xhr) { xhr.setRequestHeader('Accept-Language', lang); },
                 type: "GET",
                 contentType: "application/json",
@@ -27,14 +27,8 @@ sap.ui.define([
                 async: true,
                 success: function (oData, response) {
                     BusyIndicator.hide();
-                    const assignedPlants = oData.value;
-                    /*
-                    assignedPlants.forEach(function (assignedPlant, index) {
-                        if (assignedPlant.DefaultPlant)
-                            that.plant = assignedPlant.Plant;
-                    });
-                    */
-                    that.plant = assignedPlants.defaultPlant;
+                    
+                    that.plant = oData.value.split(",")[0].replaceAll('"', "").split(":")[1];
 
                     that.getMarshallingData(that.plant);
                 },
