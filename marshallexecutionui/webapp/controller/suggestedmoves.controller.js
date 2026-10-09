@@ -76,7 +76,7 @@ sap.ui.define([
             var lang = oLocale.language;
             var that = this;
             var sDest = "/marshallingservices";
-            var path = "/Marshalling/PickTaskHeaders?$filter=Plant eq '" + plant + "' and DeliveryDate ge '" + currentDateUTC + "' and DeliveryDate le '" + toDate + "' and To_Marshalling/ID ne null and To_Marshalling/Status_ID ne 'PALLETISED' and To_Marshalling/Status_ID ne 'LOADED' and Status_ID eq 'COMPLETED'&$select=ID,Route,PickJob&$expand=To_Marshalling($expand=MarshallingBinID($select=ID,Description),SuggestedBinID($select=ID,Description)),Status,Media";
+            var path = "/Marshalling/PickTaskHeaders?$filter=Plant eq '" + plant + "' and DeliveryDate ge '" + currentDateUTC + "' and DeliveryDate le '" + toDate + "' and To_Marshalling/ID ne null and To_Marshalling/Status_ID ne 'PALLETISED' and To_Marshalling/Status_ID ne 'LOADED' and Status_ID eq 'COMPLETED'&$select=ID,Route,PickJob&$expand=To_Marshalling($expand=Temperature,MarshallingBinID($select=ID,Description),SuggestedBinID($select=ID,Description)),Status,Media";
             var sUrl = this.appModulePath + sDest + path;
             
             $.ajax({
@@ -111,7 +111,7 @@ sap.ui.define([
                     Media: cage?.Media?.Description || "",
                     Status: cage?.Status?.Description || "",
                     Source: cage?.To_Marshalling?.MarshallingBinID?.Description || "",
-                    Temperature: cage?.Temperature_ID
+                    Temperature: cage?.To_Marshalling?.Temperature?.Description || ""
                 });
             });
 
