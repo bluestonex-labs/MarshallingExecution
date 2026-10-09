@@ -47,10 +47,13 @@ sap.ui.define([
                 success: function (oData, response) {
                     BusyIndicator.hide();
                     const assignedPlants = oData.value;
+                    /*
                     assignedPlants.forEach(function (assignedPlant, index) {
                         if (assignedPlant.DefaultPlant)
                             that.plant = assignedPlant.Plant;
                     });
+                    */
+                    that.plant = assignedPlants.defaultPlant;
 
                     that.getMarshallingData(that.plant);
                 },
@@ -107,7 +110,8 @@ sap.ui.define([
                     PalletID:cage?.To_Marshalling?.PalletID || "",
                     Media: cage?.Media?.Description || "",
                     Status: cage?.Status?.Description || "",
-                    Source: cage?.To_Marshalling?.MarshallingBinID?.Description || ""
+                    Source: cage?.To_Marshalling?.MarshallingBinID?.Description || "",
+                    Temperature: cage?.Temperature_ID
                 });
             });
 
@@ -116,6 +120,10 @@ sap.ui.define([
             this.getView().setModel(oFlatModel, "flattened");
             this._allData = aFlattenedData;
             this._updatePagedData();
+        },
+
+        sortData: function (array, option) {
+            array
         },
 
         _updatePagedData: function () {
